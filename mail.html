@@ -1,0 +1,107 @@
+<title> Email Code </title>
+
+<head>
+    <style>
+        .wrapper {
+            text-align: center;
+
+            top: 50%;
+        }
+
+
+
+
+        .button {
+            background-color: rgb(75, 66, 199);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 1px;
+            cursor: pointer;
+
+        }
+
+        @font-face {
+            font-family: Roboto-Light;
+            src: url('Roboto-Light.TTF');
+        }
+
+        h2,
+        p {
+
+            font-family: Roboto-light
+        }
+
+        @font-face {
+            font-family: Roboto-Regular;
+            src: url('Roboto-Regular.TTF');
+        }
+
+        input {
+
+            font-family: Roboto-Regular
+        }
+    </style>
+</head>
+
+
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    var randomNumber = Math.floor(Math.random() * 9999) + 1111
+    function sendEmail() {
+
+        var mailto = document.getElementById('email1').value;
+
+        if (mailto == '') {
+            alert("Please insert your email")
+            return;
+        }
+        Email.send({
+            SecureToken: "acd51153-02e2-46c0-a110-3de4aeeb4a3a",
+            To: mailto,
+            From: "softwarefree22@libero.it",
+            Subject: "Here's Your Code:",
+            Body: "Here's your code: " + randomNumber
+        }).then(
+            alert("Code sent!")
+        );
+        var text = document.getElementById("textbox2");
+        if (text.style.display === "none") {
+            text.style.display = "block";
+        }
+    }
+
+    function checkCode() {
+        var codeText = document.getElementById('textbox2').value;
+        if (codeText == randomNumber) {
+            alert("The code is right!")
+            return;
+        } else return alert("The code is wrong!")
+
+    }
+</script>
+
+
+<body style="background-color: #121212">
+
+    <div class=wrapper>
+        <h2 style="color:white"> Insert the mail you want to verify</h2>
+        <input type="text" name="email" id="email1" value=""><br>
+        <input type="button" class="button" id="button1" input onclick="sendEmail()" value="Send Code">
+
+        <br>
+        <br>
+        <br>
+        <p style="color:white">insert the code you received by email: </p>
+        <input type="text" name="textbox" id="textbox2" value=""><br>
+        <input type="button" class="button" id="button2" input onclick="checkCode()" value="Confirm">
+    </div>
+
+
+
+</body>
