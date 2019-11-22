@@ -4,7 +4,6 @@
     <style>
         .wrapper {
             text-align: center;
-
             top: 50%;
         }
 
@@ -49,13 +48,12 @@
 <script>
     var randomNumber = Math.floor(Math.random() * 9999) + 1111
     function sendEmail() {
-
         var mailto = document.getElementById('email1').value;
-
         if (mailto == '') {
             alert("Please insert your email")
             return;
         }
+        
         Email.send({
             SecureToken: "YOUR_TOKEN",
             To: mailto,
